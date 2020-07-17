@@ -37,10 +37,11 @@ activity %>% group_by(date) %>%
   
 2. histogram of the total number of steps taken each day  
 ```{r, echo = TRUE}
-activity %>% group_by(date) %>% 
+hist_total <- activity %>% group_by(date) %>% 
   summarise(total_steps_per_day = sum(steps, na.rm = TRUE)) %>% 
   ggplot(aes(total_steps_per_day))+
   geom_histogram(binwidth = 1000)
+hist_total
 ```
   
 3. mean and median of the total number of steps taken per day
@@ -60,11 +61,12 @@ activity %>% group_by(date) %>%
 
 1. time series plot  
 ```{r, echo = TRUE}
-activity %>% group_by(interval) %>% 
+plot_ac <- activity %>% group_by(interval) %>% 
   summarise(avg_step = mean(steps, na.rm = TRUE)) %>% 
   ggplot(aes(x = interval, y = avg_step))+
   geom_line()+
   labs(x = "5-minute interval", y = "average number of steps", title = "Average daily activity pattern")
+plot_ac
 ```
 
 2. 5-minute interval contains the maximum number of steps
@@ -93,10 +95,11 @@ activity$steps_impute <- impute(activity$steps, fun=mean)
 
 3. histogram of the total number of steps taken each day
 ```{r, echo = TRUE}
-activity %>% group_by(date) %>% 
+hist_acti <- activity %>% group_by(date) %>% 
   summarise(total_steps_per_day = sum(steps_impute, na.rm = TRUE)) %>% 
   ggplot(aes(total_steps_per_day))+
   geom_histogram(binwidth = 1000)
+hist_acti
 ```
 
 mean and median  
@@ -123,12 +126,13 @@ activity_week <- activity %>% mutate(days = weekdays(as.Date(date)),
 
 2. time series plot – “weekday” and “weekend” 
 ```{r, echo = TRUE}
-activity_week %>% group_by(weekday,interval) %>% 
+plot_week <- activity_week %>% group_by(weekday,interval) %>% 
   summarise(avg_step = mean(steps, na.rm = TRUE)) %>% 
   ggplot(aes(x = interval, y = avg_step, color = weekday))+
   geom_line()+
   labs(x = "5-minute interval", y = "average number of steps", 
        title = "Average daily activity pattern : “weekday” vs  “weekend”")+
   facet_grid(weekday ~.)
+plot_week
 ```
 
