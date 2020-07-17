@@ -11,39 +11,39 @@ output:
 1. Load packages  
 ```{r echo=TRUE}
 library(ggplot2)
-library(Hmisc)
 library(dplyr)
+library(Hmisc)
 ```
 
 2. Download file and unzip  
-```{r}
+```{r echo=TRUE}
 wd <- getwd()
 download.file("https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2Factivity.zip", destfile = paste0(wd,"/activity.zip"))
 unzip("activity.zip")
 ```
 
 3. load the 'activity.csv' file  
-```{r}
+```{r echo=TRUE}
 activity <- read.csv("activity.csv")
 ```
 
 
 ## What is mean total number of steps taken per day?
 1. total number of steps taken per day  
-```{r}
+```{r echo=TRUE}
 activity %>% group_by(date) %>% 
   summarise(total_steps_per_day = sum(steps, na.rm = TRUE))
 ```
   
 2. histogram of the total number of steps taken each day  
-```{r}
+```{r echo=TRUE}
 activity %>% group_by(date) %>% 
   summarise(total_steps_per_day = sum(steps, na.rm = TRUE)) %>% 
   ggplot(aes(total_steps_per_day))+
   geom_histogram(binwidth = 1000)
 ```
 
-```{r}
+```{r echo=TRUE}
 activity_step <- activity %>% group_by(date) %>% 
   summarise(total_steps_per_day = sum(steps, na.rm = TRUE))
 
