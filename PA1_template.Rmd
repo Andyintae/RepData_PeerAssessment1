@@ -1,8 +1,10 @@
 ---
 title: "Reproducible Research: Peer Assessment 1"
 output: 
-  html_document:
-    keep_md: true
+  html_document: 
+    keep_md: yes
+editor_options: 
+  chunk_output_type: inline
 ---
 
 
@@ -41,13 +43,6 @@ activity %>% group_by(date) %>%
   summarise(total_steps_per_day = sum(steps, na.rm = TRUE)) %>% 
   ggplot(aes(total_steps_per_day))+
   geom_histogram(binwidth = 1000)
-```
-
-```{r echo=TRUE}
-activity_step <- activity %>% group_by(date) %>% 
-  summarise(total_steps_per_day = sum(steps, na.rm = TRUE))
-
-hist(activity_step$total_steps_per_day)  
 ```
 
   
