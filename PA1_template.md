@@ -112,7 +112,7 @@ activity %>% group_by(date) %>%
 2. histogram of the total number of steps taken each day  
 
 ```r
-hist_total <- activity %>% group_by(date) %>% 
+activity %>% group_by(date) %>% 
   summarise(total_steps_per_day = sum(steps, na.rm = TRUE)) %>% 
   ggplot(aes(total_steps_per_day))+
   geom_histogram(binwidth = 1000)
@@ -120,10 +120,6 @@ hist_total <- activity %>% group_by(date) %>%
 
 ```
 ## `summarise()` ungrouping output (override with `.groups` argument)
-```
-
-```r
-hist_total
 ```
 
 ![](PA1_template_files/figure-html/unnamed-chunk-5-1.png)<!-- -->
