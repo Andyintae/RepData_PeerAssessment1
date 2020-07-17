@@ -167,7 +167,7 @@ activity %>% group_by(date) %>%
 1. time series plot  
 
 ```r
-plot_ac <- activity %>% group_by(interval) %>% 
+activity %>% group_by(interval) %>% 
   summarise(avg_step = mean(steps, na.rm = TRUE)) %>% 
   ggplot(aes(x = interval, y = avg_step))+
   geom_line()+
@@ -176,10 +176,6 @@ plot_ac <- activity %>% group_by(interval) %>%
 
 ```
 ## `summarise()` ungrouping output (override with `.groups` argument)
-```
-
-```r
-plot_ac
 ```
 
 ![](PA1_template_files/figure-html/unnamed-chunk-7-1.png)<!-- -->
@@ -243,7 +239,7 @@ activity$steps_impute <- impute(activity$steps, fun=mean)
 3. histogram of the total number of steps taken each day
 
 ```r
-hist_acti <- activity %>% group_by(date) %>% 
+activity %>% group_by(date) %>% 
   summarise(total_steps_per_day = sum(steps_impute, na.rm = TRUE)) %>% 
   ggplot(aes(total_steps_per_day))+
   geom_histogram(binwidth = 1000)
@@ -251,10 +247,6 @@ hist_acti <- activity %>% group_by(date) %>%
 
 ```
 ## `summarise()` ungrouping output (override with `.groups` argument)
-```
-
-```r
-hist_acti
 ```
 
 ![](PA1_template_files/figure-html/unnamed-chunk-11-1.png)<!-- -->
@@ -317,7 +309,7 @@ activity_week <- activity %>% mutate(days = weekdays(as.Date(date)),
 2. time series plot – “weekday” and “weekend” 
 
 ```r
-plot_week <- activity_week %>% group_by(weekday,interval) %>% 
+activity_week %>% group_by(weekday,interval) %>% 
   summarise(avg_step = mean(steps, na.rm = TRUE)) %>% 
   ggplot(aes(x = interval, y = avg_step, color = weekday))+
   geom_line()+
@@ -328,10 +320,6 @@ plot_week <- activity_week %>% group_by(weekday,interval) %>%
 
 ```
 ## `summarise()` regrouping output by 'weekday' (override with `.groups` argument)
-```
-
-```r
-plot_week
 ```
 
 ![](PA1_template_files/figure-html/unnamed-chunk-14-1.png)<!-- -->

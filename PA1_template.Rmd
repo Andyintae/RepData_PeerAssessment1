@@ -16,21 +16,21 @@ library(dplyr)
 ```
 
 2. Download file and unzip  
-```{r echo=TRUE}
+```{r}
 wd <- getwd()
 download.file("https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2Factivity.zip", destfile = paste0(wd,"/activity.zip"))
 unzip("activity.zip")
 ```
 
 3. load the 'activity.csv' file  
-```{r echo=TRUE}
+```{r}
 activity <- read.csv("activity.csv")
 ```
 
 
 ## What is mean total number of steps taken per day?
 1. total number of steps taken per day  
-```{r echo=TRUE}
+```{r}
 activity %>% group_by(date) %>% 
   summarise(total_steps_per_day = sum(steps, na.rm = TRUE))
 ```
@@ -44,7 +44,7 @@ activity %>% group_by(date) %>%
 ```
   
 3. mean and median of the total number of steps taken per day
-```{r echo=TRUE}
+```{r}
 activity %>% group_by(date) %>% 
   summarise(total_steps_per_day = sum(steps, na.rm = TRUE)) %>% 
   summarise(mean_total_steps_per_day = mean(total_steps_per_day))
@@ -59,17 +59,16 @@ activity %>% group_by(date) %>%
 ## What is the average daily activity pattern?  
 
 1. time series plot  
-```{r echo=TRUE}
-plot_ac <- activity %>% group_by(interval) %>% 
+```{r}
+activity %>% group_by(interval) %>% 
   summarise(avg_step = mean(steps, na.rm = TRUE)) %>% 
   ggplot(aes(x = interval, y = avg_step))+
   geom_line()+
   labs(x = "5-minute interval", y = "average number of steps", title = "Average daily activity pattern")
-plot_ac
 ```
 
 2. 5-minute interval contains the maximum number of steps
-```{r echo=TRUE}
+```{r}
 activity %>% group_by(interval) %>% 
   summarise(avg_step = mean(steps, na.rm = TRUE)) %>% 
   arrange(desc(avg_step)) %>% 
@@ -81,28 +80,27 @@ activity %>% group_by(interval) %>%
 ## Imputing missing values
 
 1. total number of missing values
-```{r echo=TRUE}
+```{r}
 summary(activity)
 activity %>% filter(is.na(steps)) %>% count()
 ```
 
 2. filling in all of the missing values with mean
-```{r echo=TRUE}
+```{r}
 activity$steps_impute <- impute(activity$steps, fun=mean)
 
 ```
 
 3. histogram of the total number of steps taken each day
-```{r echo=TRUE}
-hist_acti <- activity %>% group_by(date) %>% 
+```{r}
+activity %>% group_by(date) %>% 
   summarise(total_steps_per_day = sum(steps_impute, na.rm = TRUE)) %>% 
   ggplot(aes(total_steps_per_day))+
   geom_histogram(binwidth = 1000)
-hist_acti
 ```
 
 mean and median  
-```{r echo=TRUE}
+```{r}
 activity %>% group_by(date) %>% 
   summarise(total_steps_per_day = sum(steps_impute, na.rm = TRUE)) %>% 
   summarise(mean_total_steps_per_day = mean(total_steps_per_day))
@@ -117,21 +115,20 @@ activity %>% group_by(date) %>%
 ## Are there differences in activity patterns between weekdays and weekends?
 
 1. new factor variable – “weekday” and “weekend”  
-```{r echo=TRUE}
+```{r}
 Sys.setlocale("LC_TIME", "English")
 activity_week <- activity %>% mutate(days = weekdays(as.Date(date)),
                     weekday = ifelse(days %in% c("Sunday", "Saturday"), "weekend", "weekday"))
 ```
 
 2. time series plot – “weekday” and “weekend” 
-```{r echo=TRUE}
-plot_week <- activity_week %>% group_by(weekday,interval) %>% 
+```{r}
+activity_week %>% group_by(weekday,interval) %>% 
   summarise(avg_step = mean(steps, na.rm = TRUE)) %>% 
   ggplot(aes(x = interval, y = avg_step, color = weekday))+
   geom_line()+
   labs(x = "5-minute interval", y = "average number of steps", 
        title = "Average daily activity pattern : “weekday” vs  “weekend”")+
   facet_grid(weekday ~.)
-plot_week
 ```
 
