@@ -95,6 +95,16 @@ activity %>% group_by(date) %>%
 ```
 
 ```
+## Warning: `...` is not empty.
+## 
+## We detected these problematic arguments:
+## * `needs_dots`
+## 
+## These dots only exist to allow future extensions and should be empty.
+## Did you misspecify an argument?
+```
+
+```
 ## # A tibble: 61 x 2
 ##    date       total_steps_per_day
 ##    <chr>                    <int>
@@ -140,6 +150,16 @@ activity %>% group_by(date) %>%
 ```
 
 ```
+## Warning: `...` is not empty.
+## 
+## We detected these problematic arguments:
+## * `needs_dots`
+## 
+## These dots only exist to allow future extensions and should be empty.
+## Did you misspecify an argument?
+```
+
+```
 ## # A tibble: 1 x 1
 ##   mean_total_steps_per_day
 ##                      <dbl>
@@ -154,6 +174,16 @@ activity %>% group_by(date) %>%
 
 ```
 ## `summarise()` ungrouping output (override with `.groups` argument)
+```
+
+```
+## Warning: `...` is not empty.
+## 
+## We detected these problematic arguments:
+## * `needs_dots`
+## 
+## These dots only exist to allow future extensions and should be empty.
+## Did you misspecify an argument?
 ```
 
 ```
@@ -194,6 +224,16 @@ activity %>% group_by(interval) %>%
 
 ```
 ## `summarise()` ungrouping output (override with `.groups` argument)
+```
+
+```
+## Warning: `...` is not empty.
+## 
+## We detected these problematic arguments:
+## * `needs_dots`
+## 
+## These dots only exist to allow future extensions and should be empty.
+## Did you misspecify an argument?
 ```
 
 ```
@@ -267,6 +307,16 @@ activity %>% group_by(date) %>%
 ```
 
 ```
+## Warning: `...` is not empty.
+## 
+## We detected these problematic arguments:
+## * `needs_dots`
+## 
+## These dots only exist to allow future extensions and should be empty.
+## Did you misspecify an argument?
+```
+
+```
 ## # A tibble: 1 x 1
 ##   mean_total_steps_per_day
 ##                      <dbl>
@@ -281,6 +331,16 @@ activity %>% group_by(date) %>%
 
 ```
 ## `summarise()` ungrouping output (override with `.groups` argument)
+```
+
+```
+## Warning: `...` is not empty.
+## 
+## We detected these problematic arguments:
+## * `needs_dots`
+## 
+## These dots only exist to allow future extensions and should be empty.
+## Did you misspecify an argument?
 ```
 
 ```

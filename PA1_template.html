@@ -412,6 +412,13 @@ unzip(&quot;activity.zip&quot;)</code></pre>
 <pre class="r"><code>activity %&gt;% group_by(date) %&gt;% 
   summarise(total_steps_per_day = sum(steps, na.rm = TRUE))</code></pre>
 <pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
+<pre><code>## Warning: `...` is not empty.
+## 
+## We detected these problematic arguments:
+## * `needs_dots`
+## 
+## These dots only exist to allow future extensions and should be empty.
+## Did you misspecify an argument?</code></pre>
 <pre><code>## # A tibble: 61 x 2
 ##    date       total_steps_per_day
 ##    &lt;chr&gt;                    &lt;int&gt;
@@ -442,6 +449,13 @@ unzip(&quot;activity.zip&quot;)</code></pre>
   summarise(total_steps_per_day = sum(steps, na.rm = TRUE)) %&gt;% 
   summarise(mean_total_steps_per_day = mean(total_steps_per_day))</code></pre>
 <pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
+<pre><code>## Warning: `...` is not empty.
+## 
+## We detected these problematic arguments:
+## * `needs_dots`
+## 
+## These dots only exist to allow future extensions and should be empty.
+## Did you misspecify an argument?</code></pre>
 <pre><code>## # A tibble: 1 x 1
 ##   mean_total_steps_per_day
 ##                      &lt;dbl&gt;
@@ -450,6 +464,13 @@ unzip(&quot;activity.zip&quot;)</code></pre>
   summarise(total_steps_per_day = sum(steps, na.rm = TRUE)) %&gt;% 
   summarise(median_total_steps_per_day = median(total_steps_per_day))</code></pre>
 <pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
+<pre><code>## Warning: `...` is not empty.
+## 
+## We detected these problematic arguments:
+## * `needs_dots`
+## 
+## These dots only exist to allow future extensions and should be empty.
+## Did you misspecify an argument?</code></pre>
 <pre><code>## # A tibble: 1 x 1
 ##   median_total_steps_per_day
 ##                        &lt;int&gt;
@@ -475,6 +496,13 @@ unzip(&quot;activity.zip&quot;)</code></pre>
   arrange(desc(avg_step)) %&gt;% 
   head(1)</code></pre>
 <pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
+<pre><code>## Warning: `...` is not empty.
+## 
+## We detected these problematic arguments:
+## * `needs_dots`
+## 
+## These dots only exist to allow future extensions and should be empty.
+## Did you misspecify an argument?</code></pre>
 <pre><code>## # A tibble: 1 x 2
 ##   interval avg_step
 ##      &lt;int&gt;    &lt;dbl&gt;
@@ -515,6 +543,13 @@ unzip(&quot;activity.zip&quot;)</code></pre>
   summarise(total_steps_per_day = sum(steps_impute, na.rm = TRUE)) %&gt;% 
   summarise(mean_total_steps_per_day = mean(total_steps_per_day))</code></pre>
 <pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
+<pre><code>## Warning: `...` is not empty.
+## 
+## We detected these problematic arguments:
+## * `needs_dots`
+## 
+## These dots only exist to allow future extensions and should be empty.
+## Did you misspecify an argument?</code></pre>
 <pre><code>## # A tibble: 1 x 1
 ##   mean_total_steps_per_day
 ##                      &lt;dbl&gt;
@@ -523,6 +558,13 @@ unzip(&quot;activity.zip&quot;)</code></pre>
   summarise(total_steps_per_day = sum(steps_impute, na.rm = TRUE)) %&gt;% 
   summarise(median_total_steps_per_day = median(total_steps_per_day))</code></pre>
 <pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
+<pre><code>## Warning: `...` is not empty.
+## 
+## We detected these problematic arguments:
+## * `needs_dots`
+## 
+## These dots only exist to allow future extensions and should be empty.
+## Did you misspecify an argument?</code></pre>
 <pre><code>## # A tibble: 1 x 1
 ##   median_total_steps_per_day
 ##                        &lt;dbl&gt;

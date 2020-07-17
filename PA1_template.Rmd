@@ -47,7 +47,7 @@ activity %>% group_by(date) %>%
 
   
 3. mean and median of the total number of steps taken per day
-```{r}
+```{r echo=TRUE}
 activity %>% group_by(date) %>% 
   summarise(total_steps_per_day = sum(steps, na.rm = TRUE)) %>% 
   summarise(mean_total_steps_per_day = mean(total_steps_per_day))
@@ -62,7 +62,7 @@ activity %>% group_by(date) %>%
 ## What is the average daily activity pattern?  
 
 1. time series plot  
-```{r}
+```{r echo=TRUE}
 activity %>% group_by(interval) %>% 
   summarise(avg_step = mean(steps, na.rm = TRUE)) %>% 
   ggplot(aes(x = interval, y = avg_step))+
@@ -71,7 +71,7 @@ activity %>% group_by(interval) %>%
 ```
 
 2. 5-minute interval contains the maximum number of steps
-```{r}
+```{r echo=TRUE}
 activity %>% group_by(interval) %>% 
   summarise(avg_step = mean(steps, na.rm = TRUE)) %>% 
   arrange(desc(avg_step)) %>% 
@@ -83,19 +83,19 @@ activity %>% group_by(interval) %>%
 ## Imputing missing values
 
 1. total number of missing values
-```{r}
+```{r echo=TRUE}
 summary(activity)
 activity %>% filter(is.na(steps)) %>% count()
 ```
 
 2. filling in all of the missing values with mean
-```{r}
+```{r echo=TRUE}
 activity$steps_impute <- impute(activity$steps, fun=mean)
 
 ```
 
 3. histogram of the total number of steps taken each day
-```{r}
+```{r echo=TRUE}
 activity %>% group_by(date) %>% 
   summarise(total_steps_per_day = sum(steps_impute, na.rm = TRUE)) %>% 
   ggplot(aes(total_steps_per_day))+
@@ -103,7 +103,7 @@ activity %>% group_by(date) %>%
 ```
 
 mean and median  
-```{r}
+```{r echo=TRUE}
 activity %>% group_by(date) %>% 
   summarise(total_steps_per_day = sum(steps_impute, na.rm = TRUE)) %>% 
   summarise(mean_total_steps_per_day = mean(total_steps_per_day))
@@ -118,14 +118,14 @@ activity %>% group_by(date) %>%
 ## Are there differences in activity patterns between weekdays and weekends?
 
 1. new factor variable – “weekday” and “weekend”  
-```{r}
+```{r echo=TRUE}
 Sys.setlocale("LC_TIME", "English")
 activity_week <- activity %>% mutate(days = weekdays(as.Date(date)),
                     weekday = ifelse(days %in% c("Sunday", "Saturday"), "weekend", "weekday"))
 ```
 
 2. time series plot – “weekday” and “weekend” 
-```{r}
+```{r echo=TRUE}
 activity_week %>% group_by(weekday,interval) %>% 
   summarise(avg_step = mean(steps, na.rm = TRUE)) %>% 
   ggplot(aes(x = interval, y = avg_step, color = weekday))+
