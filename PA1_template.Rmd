@@ -8,9 +8,50 @@ output:
 
 ## Loading and preprocessing the data
 
+1. Load packages  
+```{r}
+library(dplyr)
+library(ggplot2)
+```
+
+2. Download file and unzip  
+```{r}
+wd <- getwd()
+download.file("https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2Factivity.zip", destfile = paste0(wd,"/activity.zip"))
+unzip("activity.zip")
+```
+
+3. load the 'activity.csv' file  
+```{r}
+activity <- read.csv("activity.csv")
+```
 
 
 ## What is mean total number of steps taken per day?
+1. total number of steps taken per day  
+```{r}
+activity %>% group_by(date) %>% 
+  summarize(total_steps_per_day = sum(steps, na.rm = TRUE))
+```
+  
+2. histogram of the total number of steps taken each day  
+```{r}
+activity %>% group_by(date) %>% 
+  summarize(total_steps_per_day = sum(steps, na.rm = TRUE)) %>% 
+  ggplot(aes(total_steps_per_day))+
+  geom_histogram(binwidth = 1000)
+```
+  
+3. mean and median of the total number of steps taken per day
+```{r}
+activity %>% group_by(date) %>% 
+  summarize(total_steps_per_day = sum(steps, na.rm = TRUE)) %>% 
+  summarize(mean_total_steps_per_day = mean(total_steps_per_day))
+
+activity %>% group_by(date) %>% 
+  summarize(total_steps_per_day = sum(steps, na.rm = TRUE)) %>% 
+  summarize(median_total_steps_per_day = median(total_steps_per_day))
+```
 
 
 
