@@ -11,27 +11,6 @@ output:
 1. Load packages  
 
 ```r
-library(dplyr)
-```
-
-```
-## 
-## Attaching package: 'dplyr'
-```
-
-```
-## The following objects are masked from 'package:stats':
-## 
-##     filter, lag
-```
-
-```
-## The following objects are masked from 'package:base':
-## 
-##     intersect, setdiff, setequal, union
-```
-
-```r
 library(ggplot2)
 library(Hmisc)
 ```
@@ -54,15 +33,36 @@ library(Hmisc)
 ```
 
 ```
-## The following objects are masked from 'package:dplyr':
+## The following objects are masked from 'package:base':
+## 
+##     format.pval, units
+```
+
+```r
+library(dplyr)
+```
+
+```
+## 
+## Attaching package: 'dplyr'
+```
+
+```
+## The following objects are masked from 'package:Hmisc':
 ## 
 ##     src, summarize
 ```
 
 ```
+## The following objects are masked from 'package:stats':
+## 
+##     filter, lag
+```
+
+```
 ## The following objects are masked from 'package:base':
 ## 
-##     format.pval, units
+##     intersect, setdiff, setequal, union
 ```
 
 2. Download file and unzip  

@@ -10,9 +10,9 @@ output:
 
 1. Load packages  
 ```{r, echo = TRUE}
-library(dplyr)
 library(ggplot2)
 library(Hmisc)
+library(dplyr)
 ```
 
 2. Download file and unzip  
