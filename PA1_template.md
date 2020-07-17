@@ -123,6 +123,23 @@ activity %>% group_by(date) %>%
 ```
 
 ![](PA1_template_files/figure-html/unnamed-chunk-5-1.png)<!-- -->
+
+
+```r
+activity_step <- activity %>% group_by(date) %>% 
+  summarise(total_steps_per_day = sum(steps, na.rm = TRUE))
+```
+
+```
+## `summarise()` ungrouping output (override with `.groups` argument)
+```
+
+```r
+hist(activity_step$total_steps_per_day)  
+```
+
+![](PA1_template_files/figure-html/unnamed-chunk-6-1.png)<!-- -->
+
   
 3. mean and median of the total number of steps taken per day
 
@@ -178,7 +195,7 @@ activity %>% group_by(interval) %>%
 ## `summarise()` ungrouping output (override with `.groups` argument)
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-7-1.png)<!-- -->
+![](PA1_template_files/figure-html/unnamed-chunk-8-1.png)<!-- -->
 
 2. 5-minute interval contains the maximum number of steps
 
@@ -249,7 +266,7 @@ activity %>% group_by(date) %>%
 ## `summarise()` ungrouping output (override with `.groups` argument)
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-11-1.png)<!-- -->
+![](PA1_template_files/figure-html/unnamed-chunk-12-1.png)<!-- -->
 
 mean and median  
 
@@ -322,5 +339,5 @@ activity_week %>% group_by(weekday,interval) %>%
 ## `summarise()` regrouping output by 'weekday' (override with `.groups` argument)
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-14-1.png)<!-- -->
+![](PA1_template_files/figure-html/unnamed-chunk-15-1.png)<!-- -->
 
