@@ -133,3 +133,5 @@ activity_week %>% group_by(weekday,interval) %>%
   facet_grid(weekday ~.)
 ```
 
+
+Thank you for your review.  

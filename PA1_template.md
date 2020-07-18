@@ -385,3 +385,5 @@ activity_week %>% group_by(weekday,interval) %>%
 
 ![](PA1_template_files/figure-html/unnamed-chunk-14-1.png)<!-- -->
 
+
+Thank you for your review.  
