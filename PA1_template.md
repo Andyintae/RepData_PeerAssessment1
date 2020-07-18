@@ -125,7 +125,8 @@ activity %>% group_by(date) %>%
 activity %>% group_by(date) %>% 
   summarise(total_steps_per_day = sum(steps, na.rm = TRUE)) %>% 
   ggplot(aes(total_steps_per_day))+
-  geom_histogram(binwidth = 1000)
+  geom_histogram(binwidth = 1000)+
+  labs(title = "total number of steps taken each day")
 ```
 
 ```
@@ -202,7 +203,7 @@ activity %>% group_by(interval) %>%
   summarise(avg_step = mean(steps, na.rm = TRUE)) %>% 
   ggplot(aes(x = interval, y = avg_step))+
   geom_line()+
-  labs(x = "5-minute interval", y = "average number of steps", title = "Average daily activity pattern")
+  labs(x = "5minute interval", y = "average number of steps", title = "Average daily activity pattern")
 ```
 
 ```
@@ -283,7 +284,8 @@ activity$steps_impute <- impute(activity$steps, fun=mean)
 activity %>% group_by(date) %>% 
   summarise(total_steps_per_day = sum(steps_impute, na.rm = TRUE)) %>% 
   ggplot(aes(total_steps_per_day))+
-  geom_histogram(binwidth = 1000)
+  geom_histogram(binwidth = 1000)+
+  labs(title = "total number of steps taken each day (new)")
 ```
 
 ```
@@ -375,7 +377,7 @@ activity_week %>% group_by(weekday,interval) %>%
   ggplot(aes(x = interval, y = avg_step, color = weekday))+
   geom_line()+
   labs(x = "5-minute interval", y = "average number of steps", 
-       title = "Average daily activity pattern : “weekday” vs  “weekend”")+
+       title = "Average daily activity pattern : Weekday vs Weekend")+
   facet_grid(weekday ~.)
 ```
 
